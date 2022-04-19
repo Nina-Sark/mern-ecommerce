@@ -46,7 +46,6 @@ function App() {
     "/payment",
   ];
 
-  console.log(pathname.trim().split("/")[1]);
   const hidden = pathNotIncluded.includes(`/${pathname.trim().split("/")[1]}`);
 
   const { dialogOpen } = useSelector((state) => state.search);
@@ -70,9 +69,9 @@ function App() {
     dispatch(handleFocus(false));
   };
 
-  /*ocument.addEventListener("scroll", () => {
+  document.addEventListener("scroll", () => {
     dispatch(getScrollPosition(Math.ceil(window.scrollY)));
-  });*/
+  });
 
   useEffect(() => {
     if (user_auth) {
