@@ -27,7 +27,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { PaymentSuccess } from "./pages/PaymentSuccess";
 import { Orders } from "./pages/Orders";
-import { SingleOrder } from "./pages/SingleOrder"
+import { SingleOrder } from "./pages/SingleOrder";
 
 function App() {
   const dispatch = useDispatch();
@@ -150,7 +150,7 @@ function App() {
         )}
         <Route path="/payment/success" element={<PaymentSuccess />} />
         <Route path="/orders" element={<Orders />} />
-        <Route path="/orders/:id" element={<SingleOrder/>}/>
+        <Route path="/orders/:id" element={<SingleOrder />} />
       </Routes>
       {(auth_logout_loading || user_loading) && <Loader />}
       {!hidden && <Footer />}
