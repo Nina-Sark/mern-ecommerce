@@ -13,6 +13,7 @@ const getProductsPerCategories = async (category, limit) => {
   const { data } = await axios.get(
     `/products?category=${category}&limit=${limit}&fields=images,name,price`
   );
+  console.log(data)
   return data;
 };
 
@@ -28,7 +29,6 @@ const getProductsByCategory = async (search) => {
 };
 
 const getProductReviews = async (productId, limit, block) => {
-  console.log(limit, block);
   const { data } = await axios.get(
     `/products/${productId}/reviews?limit=${limit}&block=${block}`
   );
@@ -63,7 +63,6 @@ const removeReview = async (productId, reviewId, token) => {
         },
       }
     );
-    console.log(data, headersOptions);
     return data;
   } catch (err) {
     return { error: err?.response?.data?.error };
