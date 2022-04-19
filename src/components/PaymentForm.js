@@ -22,6 +22,7 @@ import { BsPlayBtn } from "react-icons/bs";
 export const PaymentForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -65,7 +66,7 @@ export const PaymentForm = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.post("/payment/process", paymentData, {
+      const { data } = await axios.post(`${process.env.REACT_APP_URL}/payment/process`, paymentData, {
         headers: {
           authorization: `Bearer ${user_auth?.token}`,
         },
@@ -74,8 +75,6 @@ export const PaymentForm = () => {
       const client_secret = data?.clientSecret;
 
       if (!stripe || !elements) return;
-
-      console.log(client_secret);
 
       const result = await stripe.confirmCardPayment(client_secret, {
         payment_method: {
@@ -94,12 +93,9 @@ export const PaymentForm = () => {
         },
       });
 
-      console.log(result);
-
       if (result?.error) {
         setError(result?.error?.message);
         setLoading(false);
-        console.log(result?.error);
       } else {
         if (result?.paymentIntent?.status === "succeeded") {
           setLoading(true);
@@ -123,7 +119,6 @@ export const PaymentForm = () => {
       payBtn.current.disabled = false;
       setError(error);
       setLoading(false);
-      console.log(error);
     }
   };
 
