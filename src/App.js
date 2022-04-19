@@ -70,9 +70,9 @@ function App() {
     dispatch(handleFocus(false));
   };
 
-  document.addEventListener("scroll", () => {
+  /*ocument.addEventListener("scroll", () => {
     dispatch(getScrollPosition(Math.ceil(window.scrollY)));
-  });
+  });*/
 
   useEffect(() => {
     if (user_auth) {
