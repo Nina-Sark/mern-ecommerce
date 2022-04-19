@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "http://localhost:9090/api/v1",
+  "proxy": "https://mern-ecommerce-node.herokuapp.com/api/v1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
