@@ -11,7 +11,7 @@ const headersOptions = {
 
 const getProductsPerCategories = async (category, limit) => {
   const { data } = await axios.get(
-    `/products?category=${category}&limit=${limit}&fields=images,name,price`
+    `https://mern-ecommerce-node.herokuapp.com/api/v1/products?category=${category}&limit=${limit}&fields=images,name,price`
   );
   console.log(data)
   return data;
