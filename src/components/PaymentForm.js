@@ -26,8 +26,6 @@ export const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  let payBtn = useRef(null);
-
   const { cartItems, totalSum } = useSelector((state) => state.cart);
   const { shippingInfo } = useSelector((state) => state.shipping);
   const { user_auth } = useSelector((state) => state.user);
@@ -62,7 +60,7 @@ export const PaymentForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    payBtn.current.disabled = true;
+    //payBtn.current.disabled = true;
 
     try {
       setLoading(true);
@@ -106,7 +104,7 @@ export const PaymentForm = () => {
           dispatch(createOrder({ orderInfo, token: user_auth?.token }));
           setError(null);
           setLoading(false);
-          payBtn.current.disabled = true;
+         // payBtn.current.disabled = true;
           dispatch(clearShipping());
           dispatch(clearCart());
           navigate("/payment/success");
@@ -116,7 +114,7 @@ export const PaymentForm = () => {
         }
       }
     } catch (error) {
-      payBtn.current.disabled = false;
+      //payBtn.current.disabled = false;
       setError(error);
       setLoading(false);
     }
@@ -154,7 +152,6 @@ export const PaymentForm = () => {
         </div>
         {!loading ? (
           <button
-            ref={payBtn}
             className="w-full py-2 bg-pink-500 text-white hover:bg-pink-600 transition"
           >
             Pay
