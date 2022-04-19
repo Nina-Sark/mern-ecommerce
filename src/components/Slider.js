@@ -9,7 +9,6 @@ import { Slide } from "./Slide";
 import { Link } from "react-router-dom";
 
 export const Slider = ({title, data}) => {
-  console.log(data)
   return (
     <div className="w-[90%] h-max mx-auto md:mb-10 mb-4">
       <div className="mb-4 flex items-center justify-between">
