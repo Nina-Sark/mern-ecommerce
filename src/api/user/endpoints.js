@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 const getCurrentUserData = async (fields, token) => {
   try {
     const { data } = await axios.get(
-      `/users/me${fields ? `?fields=${fields}` : ""}`,
+      `${process.env.REACT_APP_URL}/users/me${fields ? `?fields=${fields}` : ""}`,
       {
         headers: {
           authorization: `Bearer ${token}`,
@@ -18,9 +18,8 @@ const getCurrentUserData = async (fields, token) => {
 };
 
 const updateUserProfile = async (newData, token) => {
-  console.log(newData)
   try {
-    const { data } = await axios.patch("/users/me", newData, {
+    const { data } = await axios.patch(`${process.env.REACT_APP_URL}/users/me`, newData, {
       headers : {
         authorization : `Bearer ${token}`
       }
@@ -33,7 +32,7 @@ const updateUserProfile = async (newData, token) => {
 
 const updatePassword = async (newCredentials, token) => {
   try {
-    const { data } = await axios.patch("/users/passwordUpdate", newCredentials, {
+    const { data } = await axios.patch(`${process.env.REACT_APP_URL}/users/passwordUpdate`, newCredentials, {
       headers : {
         authorization : `Bearer ${token}`
       }

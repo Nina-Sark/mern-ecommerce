@@ -11,7 +11,7 @@ const headersOptions = {
 
 const loginUser = async (credentials) => {
   try {
-    const { data } = await axios.post("/auth/login", credentials);
+    const { data } = await axios.post(`${process.env.REACT_APP_URL}/auth/login`, credentials);
     console.log("data ==", data);
     return data;
   } catch (error) {
@@ -21,8 +21,7 @@ const loginUser = async (credentials) => {
 
 const signupUser = async (credentials) => {
   try {
-    const { data } = await axios.post("/auth/register", credentials);
-    console.log("---", data);
+    const { data } = await axios.post(`${process.env.REACT_APP_URL}/auth/register`, credentials);
     return data;
   } catch (error) {
     return { error: error?.response?.data?.error };
@@ -31,8 +30,7 @@ const signupUser = async (credentials) => {
 
 const logoutUser = async () => {
   try {
-    const { data } = await axios.post("/auth/logout", null, headersOptions);
-    console.log("log out --- ", data);
+    const { data } = await axios.post(`${process.env.REACT_APP_URL}/auth/logout`, null, headersOptions);
     return data;
   } catch (error) {
     return { error: error?.response?.data?.error };
@@ -41,7 +39,7 @@ const logoutUser = async () => {
 
 const forgotPassword = async (email) => {
   try {
-    const { data } = await axios.post("/auth/forgotPassword", { email });
+    const { data } = await axios.post(`${process.env.REACT_APP_URL}/auth/forgotPassword`, { email });
     return data;
   } catch (err) {
     return { error: err?.response?.data?.error };
@@ -51,7 +49,7 @@ const forgotPassword = async (email) => {
 const resetPassword = async (token, password) => {
   console.log(token, password);
   try {
-    const { data } = await axios.patch(`/auth/resetPassword/${token}`, {
+    const { data } = await axios.patch(`${process.env.REACT_APP_URL}/auth/resetPassword/${token}`, {
       password,
     });
     console.log(data);

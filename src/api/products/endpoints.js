@@ -18,19 +18,19 @@ const getProductsPerCategories = async (category, limit) => {
 };
 
 const getSingleProduct = async (productId) => {
-  const { data } = await axios.get(`/products/${productId}`);
+  const { data } = await axios.get(`${process.env.REACT_APP_URL}/products/${productId}`);
   return data;
 };
 
 const getProductsByCategory = async (search) => {
-  const searchStr = `/products${search}&fields=name,images,price&limit=8`;
+  const searchStr = `${process.env.REACT_APP_URL}/products${search}&fields=name,images,price&limit=8`;
   const { data } = await axios.get(searchStr);
   return data;
 };
 
 const getProductReviews = async (productId, limit, block) => {
   const { data } = await axios.get(
-    `/products/${productId}/reviews?limit=${limit}&block=${block}`
+    `${process.env.REACT_APP_URL}/products/${productId}/reviews?limit=${limit}&block=${block}`
   );
   return data;
 };
@@ -39,7 +39,7 @@ const addReview = async (productId, rating, comment, token) => {
   try {
     const body = { rating, comment };
     const { data } = await axios.post(
-      `/products/${productId}/newReview`,
+      `${process.env.REACT_APP_URL}/products/${productId}/newReview`,
       body,
       {
         headers: {
@@ -56,7 +56,7 @@ const addReview = async (productId, rating, comment, token) => {
 const removeReview = async (productId, reviewId, token) => {
   try {
     const { data } = await axios.delete(
-      `/products/${productId}/reviews/${reviewId}`,
+      `${process.env.REACT_APP_URL}/products/${productId}/reviews/${reviewId}`,
       {
         headers: {
           authorization: `Bearer ${token}`,
@@ -73,7 +73,7 @@ const updateReview = async (productId, rating, comment, token) => {
   const body = { rating, comment };
   try {
     const { data } = await axios.post(
-      `/products/${productId}/newReview`,
+      `${process.env.REACT_APP_URL}/products/${productId}/newReview`,
       body,
       {
         headers: {

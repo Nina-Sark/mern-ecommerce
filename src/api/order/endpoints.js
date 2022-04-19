@@ -2,7 +2,7 @@ import axios from "axios";
 
 const createOrder = async (orderInfo, token) => {
   try {
-    const { data } = await axios.post("/orders", orderInfo, {
+    const { data } = await axios.post(`${process.env.REACT_APP_URL}/orders`, orderInfo, {
       headers: {
         authorization: `Bearer ${token}`,
       },
@@ -15,7 +15,7 @@ const createOrder = async (orderInfo, token) => {
 
 const getOrders = async (token) => {
   try {
-    const { data } = await axios.get("/orders", {
+    const { data } = await axios.get(`${process.env.REACT_APP_URL}/orders`, {
       headers: {
         authorization: `Bearer ${token}`,
       },
@@ -28,7 +28,7 @@ const getOrders = async (token) => {
 
 const getOrder = async (id, token) => {
   try {
-    const { data } = await axios.get(`/orders/${id}`, {
+    const { data } = await axios.get(`${process.env.REACT_APP_URL}/orders/${id}`, {
       headers: {
         authorization: `Bearer ${token}`,
       },
