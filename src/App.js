@@ -56,7 +56,7 @@ function App() {
   async function getStripeApiKey() {
     const {
       data: { stripeApiKey },
-    } = await axios.get("/payment/stripeApiKey", {
+    } = await axios.get(`${process.env.REACT_APP_URL}/payment/stripeApiKey`, {
       headers: {
         authorization: `Bearer ${user_auth?.token}`,
       },

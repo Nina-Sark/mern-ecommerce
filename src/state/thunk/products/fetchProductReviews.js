@@ -7,7 +7,6 @@ export const fetchProductReviews = createAsyncThunk(
     const { id: productId, limit, block, role = "get" } = options;
    try {
     const reviews = await API.getProductReviewsAPI(productId, limit, block);
-    localStorage.setItem("r",JSON.stringify(reviews))
     return { reviews, role };
    } catch(err) {
        console.log(err)
