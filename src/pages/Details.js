@@ -42,7 +42,6 @@ export const Details = () => {
   
     const quantity = cartItems.find((item) => item?.id === data?._id) ? cartItems.find((item) => item?.id === data?._id)?.quantity : data?.quantity
     const stock = cartItems.find((item) => item?.id === data?._id) ? cartItems.find((item) => item?.id === data?._id)?.inStock : data?.stock
-    console.log("sssssssss",quantity, data?.stock)
 
   useEffect(() => {
     dispatch(clearReviews());
