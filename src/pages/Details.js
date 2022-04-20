@@ -16,6 +16,7 @@ import {
   toggleReviewDialog,
 } from "../state/reducers/DetailsReducer";
 import { ReviewDialog } from "../components/ReviewDialog";
+import { Head } from "../components/Head";
 import { AnimatePresence } from "framer-motion";
 import { addItemToCart, increaseQuantity } from "../state/reducers/CartReducer";
 
@@ -98,6 +99,7 @@ export const Details = () => {
     <>
       {!loading ? (
         <Container>
+          <Head title={data?.name}/>
           <AnimatePresence>
             {reviewDialogOpen && auth && <ReviewDialog />}
           </AnimatePresence>
