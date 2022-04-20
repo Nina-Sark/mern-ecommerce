@@ -99,7 +99,7 @@ export const Details = () => {
     <>
       {!loading ? (
         <Container>
-          <Head title={data?.name}/>
+          <Head title={!loading ? data?.name : "Loading..."}/>
           <AnimatePresence>
             {reviewDialogOpen && auth && <ReviewDialog />}
           </AnimatePresence>
