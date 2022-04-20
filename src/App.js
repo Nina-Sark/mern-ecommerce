@@ -92,7 +92,7 @@ function App() {
     if (user_auth) {
       await getStripeApiKey();
     }
-  }, []);
+  }, [user_auth]);
 
   return (
     <div className="relative" onClick={handleClickAway}>
