@@ -51,7 +51,7 @@ export const Cart = () => {
 
   return (
     <>
-      <Head title="Cart"/>
+       <Head title="Cart"/>
       {cartItems?.length === 0 ? (
         <div className="flex items-center justify-center h-full">
           <div className="flex flex-col items-center mt-16">
