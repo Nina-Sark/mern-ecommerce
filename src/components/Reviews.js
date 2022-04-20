@@ -21,7 +21,6 @@ export const Reviews = ({ reviews, numOfReviews, blocks }) => {
   };
 
   const reviewsComponent = useMemo(() => {
-    alert(block)
     return reviews?.map((review) => (
       <Review
         productId={productId}
